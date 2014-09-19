@@ -17,11 +17,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 石光 部门：移动研发部-掌上京东
  *         Date: 14-4-18
  *         Time: 下午4:33
  *         To change this template use File | Settings | File Templates.
- * @copyright Copyright 2014-XXXX JD.COM All Right Reserved
  */
 
 public class ExcelUtil {

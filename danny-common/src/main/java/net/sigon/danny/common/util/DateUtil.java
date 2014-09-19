@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * User: Created by chenbaoan@360buy.com
  * Date: 2011-4-29
  * Time: 11:58:50.
  */
