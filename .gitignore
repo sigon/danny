@@ -1,0 +1,6 @@
+profiles.xml
+*.iml
+.idea
+target
+*.war
+*.thmx
