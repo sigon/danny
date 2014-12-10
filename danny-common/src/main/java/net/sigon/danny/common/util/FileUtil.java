@@ -1,4 +1,4 @@
-package net.sigon.codenote.common.util;
+package net.sigon.danny.common.util;
 
 import java.io.*;
 
