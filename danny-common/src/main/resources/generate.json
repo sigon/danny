@@ -10,46 +10,48 @@
             "controllerPath":"/Users/sigon/workspace/trader/trader-web/src/main/java",
             "controllerPackage":"net.sigon.danny.controller",
             "mapperPackage":"com.aunewtop.dao.mapper",
-            "bean":{
-                "table":"user",
-                "beanPackage":"net.sigon.danny.bean",
-                "primaryKey":"id",
-                "fields":[
-                    {
-                        "name":"status",
-                        "type":"select",
-                        "enumtype":"net.sigon.dannydomain.StatusEnum",
-                        "search":"select"
-                    },{
-                        "name":"birthday",
-                        "type":"date"
-                    },{
-                        "name":"name",
-                        "type":"text",
-                        "enumtype":"net.sigon.dannydomain.StatusEnum",
-                        "search":"true",
-                        "required":true,
-                        "pattern":"\\d{2,10}"
-                    },{
-                        "name":"modifyDate",
-                        "type":"date",
-                        "search":"between"
-                    }
-                ]
-            },
-            "modules":[
+            "beans":[
                 {
-                    "type":"add",
-                    "template":"/common/add.ftl",
-                    "ignoreFields":"password,createDate,modifyDate"
-                },{
-                    "type":"edit",
-                    "template":"/common/edit.ftl",
-                    "ignoreFields":"password,createDate,modifyDate"
-                },{
-                    "type":"search",
-                    "template":"/common/list.ftl",
-                    "delete":true
+                    "table":"user",
+                    "beanPackage":"net.sigon.danny.bean",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"status",
+                            "type":"select",
+                            "enumtype":"net.sigon.dannydomain.StatusEnum",
+                            "search":"select"
+                        },{
+                            "name":"birthday",
+                            "type":"date"
+                        },{
+                            "name":"name",
+                            "type":"text",
+                            "enumtype":"net.sigon.dannydomain.StatusEnum",
+                            "search":"true",
+                            "required":true,
+                            "pattern":"\\d{2,10}"
+                        },{
+                            "name":"modifyDate",
+                            "type":"date",
+                            "search":"between"
+                        }
+                    ],
+                    "modules":[
+                        {
+                            "type":"add",
+                            "template":"/common/add.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"edit",
+                            "template":"/common/edit.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"search",
+                            "template":"/common/list.ftl",
+                            "delete":true
+                        }
+                    ]
                 }
             ]
         }

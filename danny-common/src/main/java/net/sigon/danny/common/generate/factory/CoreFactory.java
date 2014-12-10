@@ -1,11 +1,15 @@
 package net.sigon.danny.common.generate.factory;
 
-import net.sigon.danny.common.db.ConnectionFactory;
+import net.sigon.danny.common.generate.bean.Bean;
 import net.sigon.danny.common.generate.bean.Configuration;
+import net.sigon.danny.common.generate.bean.Generate;
+import net.sigon.danny.common.generate.bean.Module;
+import net.sigon.danny.common.util.ClassloaderUtility;
+import net.sigon.danny.common.util.ObjectFactory;
 import org.apache.commons.collections.CollectionUtils;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.util.Map;
 
 
 /**
@@ -16,10 +20,24 @@ import java.sql.SQLException;
  * To change this template use File | Settings | File Templates.
  */
 public class CoreFactory {
-    private Connection conn;
 
-    public Boolean execute(Configuration config){
+    private BaseGenerator serviceGenerator;
+    private BaseGenerator controllerGenerator;
+    private Map<String, BaseGenerator> moduleGeneratorMap;
+    public Boolean execute(Configuration config) throws IOException {
         init(config);
+        for(Generate generate:config.getGenerates()){
+            for(Bean bean:generate.getBeans()){
+                serviceGenerator.execute(config, generate, bean, null);
+                controllerGenerator.execute(config, generate, bean, null);
+                for(Module module : bean.getModules()){
+                    BaseGenerator moduleGenerator = moduleGeneratorMap.get(module.getType());
+                    if(moduleGenerator != null){
+                        moduleGenerator.execute(config, generate, bean, module);
+                    }
+                }
+            }
+        }
 
         return true;
     }
@@ -27,10 +45,14 @@ public class CoreFactory {
         if(config != null && CollectionUtils.isEmpty(config.getClassPaths())){
             return;
         }
-        try {
-            conn = ConnectionFactory.getInstance().getConnection(config.getJdbcConnection());
-        } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        ObjectFactory.addExternalClassLoader(ClassloaderUtility.getCustomClassloader(config.getClassPaths()));
+
+        //todo 初始化serviceGenerator,controllerGenerator和moduleGeneratorMap
+//
+//        try {
+//            conn = ConnectionFactory.getInstance().getConnection(config.getJdbcConnection());
+//        } catch (SQLException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
     }
 }

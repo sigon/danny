@@ -2,6 +2,9 @@ package net.sigon.danny.common.generate.factory;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
+import net.sigon.danny.common.generate.bean.Bean;
+import net.sigon.danny.common.generate.bean.Generate;
+import net.sigon.danny.common.generate.bean.Module;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
@@ -35,9 +38,12 @@ public abstract class BaseGenerator {
     public abstract String getStaticPath();
     public abstract void trans(Map<String, Object> map);
 
-    public String execute(net.sigon.danny.common.generate.bean.Configuration configuration) throws IOException {
+    public String execute(net.sigon.danny.common.generate.bean.Configuration configuration, Generate generate, Bean bean, Module module) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("config", configuration);
+        map.put("generate", generate);
+        map.put("bean", bean);
+        map.put("module", module);
         trans(map);
         int result = build(map);
 

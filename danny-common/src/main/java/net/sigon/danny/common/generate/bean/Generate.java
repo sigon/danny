@@ -1,10 +1,6 @@
 package net.sigon.danny.common.generate.bean;
 
-import org.apache.commons.collections.CollectionUtils;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,19 +17,9 @@ public class Generate {
     private String controllerPath;
     private String controllerPackage;
     private String mapperPackage;
-    private Bean bean;
-    private List<Module> modules;
+    private List<Bean> beans;
 
-    public Map<String, Module> getModuleMap(){
-        if(CollectionUtils.isEmpty(modules)){
-            return null;
-        }
-        Map<String, Module> map = new HashMap<String, Module>();
-        for(int i = 0 ; i < modules.size() ; i ++){
-            map.put(modules.get(i).getType(), modules.get(i));
-        }
-        return map;
-    }
+
     public String getId() {
         return id;
     }
@@ -90,19 +76,11 @@ public class Generate {
         this.mapperPackage = mapperPackage;
     }
 
-    public Bean getBean() {
-        return bean;
+    public List<Bean> getBeans() {
+        return beans;
     }
 
-    public void setBean(Bean bean) {
-        this.bean = bean;
-    }
-
-    public List<Module> getModules() {
-        return modules;
-    }
-
-    public void setModules(List<Module> modules) {
-        this.modules = modules;
+    public void setBeans(List<Bean> beans) {
+        this.beans = beans;
     }
 }

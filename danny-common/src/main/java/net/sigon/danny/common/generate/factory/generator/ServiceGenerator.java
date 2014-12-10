@@ -1,7 +1,5 @@
 package net.sigon.danny.common.generate.factory.generator;
 
-import net.sigon.danny.common.generate.bean.Configuration;
-import net.sigon.danny.common.generate.bean.Generate;
 import net.sigon.danny.common.generate.factory.BaseGenerator;
 
 import java.util.Map;
@@ -15,12 +13,8 @@ import java.util.Map;
  */
 public class ServiceGenerator extends BaseGenerator{
 
-    private Configuration configuration;
-    private Generate generate;
-    public ServiceGenerator(Configuration configuration, Generate generate){
-        this.configuration = configuration;
-        this.generate = generate;
-    }
+    private String template;
+    private String staticPath;
     @Override
     public String getTemplate() {
         return "/java/service.ftl";
@@ -28,13 +22,12 @@ public class ServiceGenerator extends BaseGenerator{
 
     @Override
     public String getStaticPath() {
-        String servicePath = generate.getServicePath();
-        String servicePackage = generate.getServicePackage();
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        return staticPath;
     }
 
     @Override
     public void trans(Map<String, Object> map) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        // todo 给staticPath赋值，组织数据放到map中
     }
 }
