@@ -16,7 +16,7 @@ import java.io.File;
 public class ConfigurationFactory {
 
     public static Configuration create(String filePath)throws Exception{
-        String json = FileUtil.readFile(new File(filePath));
+        String json = FileUtil.readFile(new File(System.getProperty("user.dir") + "/danny-common/target/classes/" + filePath));
         Configuration configuration = (Configuration)JacksonJsonUtil.jsonToBean(json, Configuration.class);
         return configuration;
     }

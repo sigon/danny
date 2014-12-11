@@ -32,6 +32,7 @@ public abstract class BaseGenerator {
         // 指定模板如何检索数据模型,这是一个高级的主题了...
         // 但先可以这么来用:
         cfg.setObjectWrapper(new DefaultObjectWrapper());
+        cfg.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
         return cfg;
     }
     public abstract String getTemplate();

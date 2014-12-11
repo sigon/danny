@@ -34,6 +34,16 @@ public class BeanField {
      */
     private Boolean required;
 
+    private String nameUpper;
+
+    public String getNameUpper() {
+        return nameUpper;
+    }
+
+    public void setNameUpper(String nameUpper) {
+        this.nameUpper = nameUpper;
+    }
+
     public String getPattern() {
         return pattern;
     }
