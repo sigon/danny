@@ -54,6 +54,7 @@ import java.util.Map;
         //todo 初始化serviceGenerator,controllerGenerator和moduleGeneratorMap
         serviceGenerator = new ServiceGenerator();
         serviceImplGenerator = new ServiceImplGenerator();
+
 //
 //        try {
 //            conn = ConnectionFactory.getInstance().getConnection(config.getJdbcConnection());

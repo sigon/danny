@@ -13,7 +13,8 @@
             "beans":[
                 {
                     "table":"user",
-                    "beanPackage":"net.sigon.danny.bean",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
                     "primaryKey":"id",
                     "fields":[
                         {
@@ -30,11 +31,16 @@
                             "enumtype":"net.sigon.dannydomain.StatusEnum",
                             "search":"true",
                             "required":true,
-                            "pattern":"\\d{2,10}"
+                            "pattern":"\\d{2,10}",
+                            "showList":"名称"
                         },{
                             "name":"modifyDate",
                             "type":"date",
-                            "search":"between"
+                            "search":"between",
+                            "showList":"修改时间"
+                        },{
+                            "name":"id",
+                            "showList":"编号"
                         }
                     ],
                     "modules":[
@@ -47,7 +53,7 @@
                             "template":"/common/edit.ftl",
                             "ignoreFields":"password,createDate,modifyDate"
                         },{
-                            "type":"search",
+                            "type":"list",
                             "template":"/common/list.ftl",
                             "delete":true
                         }

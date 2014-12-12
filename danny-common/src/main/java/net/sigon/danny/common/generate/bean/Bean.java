@@ -16,6 +16,7 @@ import java.util.Map;
 public class Bean {
     private String table;
     private String beanPackage;
+    private String paramPackage;
     private String primaryKey;
     private List<BeanField> fields;
     private List<Module> modules;
@@ -68,5 +69,13 @@ public class Bean {
 
     public void setModules(List<Module> modules) {
         this.modules = modules;
+    }
+
+    public String getParamPackage() {
+        return paramPackage;
+    }
+
+    public void setParamPackage(String paramPackage) {
+        this.paramPackage = paramPackage;
     }
 }
