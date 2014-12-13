@@ -2,6 +2,7 @@ package net.sigon.danny.common.generate.factory;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
+import net.sigon.danny.common.freemarker.ShowDirectiveModel;
 import net.sigon.danny.common.generate.bean.Bean;
 import net.sigon.danny.common.generate.bean.Generate;
 import net.sigon.danny.common.generate.bean.Module;
@@ -33,6 +34,7 @@ public abstract class BaseGenerator {
         // 但先可以这么来用:
         cfg.setObjectWrapper(new DefaultObjectWrapper());
         cfg.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
+        cfg.setSharedVariable("show", new ShowDirectiveModel());
         return cfg;
     }
     public abstract String getTemplate();

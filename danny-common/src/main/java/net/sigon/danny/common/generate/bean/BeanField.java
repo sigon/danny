@@ -1,5 +1,7 @@
 package net.sigon.danny.common.generate.bean;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sigon
@@ -35,9 +37,28 @@ public class BeanField {
     private Boolean required;
 
     private String nameUpper;
+    private String showList;
+
+    public String getEnumName(){
+        if(StringUtils.isBlank(enumtype)){
+            return null;
+        }
+        return enumtype.substring(enumtype.lastIndexOf(".") + 1);
+    }
+
+    public String getShowList() {
+        return showList;
+    }
+
+    public void setShowList(String showList) {
+        this.showList = showList;
+    }
 
     public String getNameUpper() {
-        return nameUpper;
+        if(StringUtils.isBlank(name)){
+            return null;
+        }
+        return StringUtils.capitalize(name);
     }
 
     public void setNameUpper(String nameUpper) {

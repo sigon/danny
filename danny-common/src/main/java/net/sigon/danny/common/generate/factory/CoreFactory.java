@@ -4,6 +4,7 @@ import net.sigon.danny.common.generate.bean.Bean;
 import net.sigon.danny.common.generate.bean.Configuration;
 import net.sigon.danny.common.generate.bean.Generate;
 import net.sigon.danny.common.generate.bean.Module;
+import net.sigon.danny.common.generate.factory.generator.ListPageGenerator;
 import net.sigon.danny.common.generate.factory.generator.ServiceGenerator;
 import net.sigon.danny.common.generate.factory.generator.ServiceImplGenerator;
 import net.sigon.danny.common.util.ClassloaderUtility;
@@ -11,6 +12,7 @@ import net.sigon.danny.common.util.ObjectFactory;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -34,12 +36,12 @@ import java.util.Map;
                 serviceGenerator.execute(config, generate, bean, null);
                 serviceImplGenerator.execute(config, generate, bean, null);
 //                controllerGenerator.execute(config, generate, bean, null);
-//                for(Module module : bean.getModules()){
-//                    BaseGenerator moduleGenerator = moduleGeneratorMap.get(module.getType());
-//                    if(moduleGenerator != null){
-//                        moduleGenerator.execute(config, generate, bean, module);
-//                    }
-//                }
+                for(Module module : bean.getModules()){
+                    BaseGenerator moduleGenerator = moduleGeneratorMap.get(module.getType());
+                    if(moduleGenerator != null){
+                        moduleGenerator.execute(config, generate, bean, module);
+                    }
+                }
             }
         }
 
@@ -54,6 +56,8 @@ import java.util.Map;
         //todo 初始化serviceGenerator,controllerGenerator和moduleGeneratorMap
         serviceGenerator = new ServiceGenerator();
         serviceImplGenerator = new ServiceImplGenerator();
+        moduleGeneratorMap = new HashMap<String, BaseGenerator>();
+        moduleGeneratorMap.put("list", new ListPageGenerator());
 
 //
 //        try {

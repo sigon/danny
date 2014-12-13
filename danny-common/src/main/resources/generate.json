@@ -29,7 +29,7 @@
                             "name":"name",
                             "type":"text",
                             "enumtype":"net.sigon.dannydomain.StatusEnum",
-                            "search":"true",
+                            "search":"text",
                             "required":true,
                             "pattern":"\\d{2,10}",
                             "showList":"名称"

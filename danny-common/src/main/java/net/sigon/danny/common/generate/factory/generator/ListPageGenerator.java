@@ -1,5 +1,7 @@
 package net.sigon.danny.common.generate.factory.generator;
 
+import net.sigon.danny.common.generate.bean.Generate;
+import net.sigon.danny.common.generate.bean.Module;
 import net.sigon.danny.common.generate.factory.BaseGenerator;
 
 import java.util.Map;
@@ -25,6 +27,10 @@ public class ListPageGenerator extends BaseGenerator{
 
     @Override
     public void trans(Map<String, Object> map) {
+        Generate generate = (Generate)map.get("generate");
+        Module module = (Module)map.get("module");
+        staticPath = generate.getFtlpath() + module.getTemplate();
+
 
     }
 }
