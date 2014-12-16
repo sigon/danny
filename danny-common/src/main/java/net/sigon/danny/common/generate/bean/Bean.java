@@ -1,6 +1,7 @@
 package net.sigon.danny.common.generate.bean;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,13 @@ public class Bean {
     private String primaryKey;
     private List<BeanField> fields;
     private List<Module> modules;
+
+    public String getNameUpper() {
+        if(StringUtils.isBlank(table)){
+            return null;
+        }
+        return StringUtils.capitalize(table);
+    }
 
     public Map<String, Module> getModuleMap(){
         if(CollectionUtils.isEmpty(modules)){

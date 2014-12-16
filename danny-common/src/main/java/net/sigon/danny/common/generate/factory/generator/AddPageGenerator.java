@@ -2,8 +2,10 @@ package net.sigon.danny.common.generate.factory.generator;
 
 import net.sigon.danny.common.generate.bean.Bean;
 import net.sigon.danny.common.generate.bean.BeanField;
+import net.sigon.danny.common.generate.bean.Generate;
 import net.sigon.danny.common.generate.bean.Module;
 import net.sigon.danny.common.generate.factory.BaseGenerator;
+import net.sigon.danny.common.util.ObjectFactory;
 import org.apache.commons.lang.StringUtils;
 
 import java.lang.reflect.Field;
@@ -34,13 +36,16 @@ public class AddPageGenerator extends BaseGenerator {
     @Override
     public void trans(Map<String, Object> map) {
         Bean bean = (Bean)map.get("bean");
+        Generate generate = (Generate)map.get("generate");
         Module module = (Module)map.get("module");
+
+        staticPath = generate.getFtlpath() + module.getTemplate();
         String className = bean.getBeanPackage() + "." + StringUtils.capitalize(bean.getTable());
 
         Map<String, BeanField> fieldMap = bean.getFieldMap();
         List<BeanField> fieldList = new ArrayList<BeanField>();
         try {
-            Class clazz = Class.forName(className);
+            Class clazz = ObjectFactory.externalClassForName(className);
             Field[] fields = clazz.getDeclaredFields();
             for(Field f:fields){
                 if(module.getIgnoreFields().indexOf(f.getName()) != -1){
@@ -56,7 +61,7 @@ public class AddPageGenerator extends BaseGenerator {
             }
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         map.put("fields", fieldList);
     }

@@ -1,9 +1,9 @@
 {
-    "classPaths":["/Users/sigon/.m2/repository/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar"],
+    "classPaths":["/Users/sigon/.m2/repository/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar",
+        "/Users/sigon/workspace/aunewtop-common/aunewtop-common-domain/target/aunewtop-common-domain-1.0-SNAPSHOT.jar"],
     "jdbcConnection":{"driverClass":"com.mysql.jdbc.Driver", "connectionURL":"jdbc:mysql://192.168.1.203:3306/gatewaydbs", "userId":"root", "password":"321"},
     "generates":[
         {
-            "id":"user",
             "ftlpath":"/Users/sigon/workspace/trader/trader-web/src/main/webapp/WEB-INF/template",
             "servicePath":"/Users/sigon/workspace/trader/trader-service/src/main/java",
             "servicePackage":"net.sigon.danny.service",
@@ -12,7 +12,7 @@
             "mapperPackage":"com.aunewtop.dao.mapper",
             "beans":[
                 {
-                    "table":"user",
+                    "table":"merchant",
                     "beanPackage":"com.aunewtop.common.domain.model",
                     "paramPackage":"com.aunewtop.trader.domain.param",
                     "primaryKey":"id",

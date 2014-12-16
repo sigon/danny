@@ -4,6 +4,7 @@ import net.sigon.danny.common.generate.bean.Bean;
 import net.sigon.danny.common.generate.bean.Configuration;
 import net.sigon.danny.common.generate.bean.Generate;
 import net.sigon.danny.common.generate.bean.Module;
+import net.sigon.danny.common.generate.factory.generator.AddPageGenerator;
 import net.sigon.danny.common.generate.factory.generator.ListPageGenerator;
 import net.sigon.danny.common.generate.factory.generator.ServiceGenerator;
 import net.sigon.danny.common.generate.factory.generator.ServiceImplGenerator;
@@ -58,6 +59,7 @@ import java.util.Map;
         serviceImplGenerator = new ServiceImplGenerator();
         moduleGeneratorMap = new HashMap<String, BaseGenerator>();
         moduleGeneratorMap.put("list", new ListPageGenerator());
+        moduleGeneratorMap.put("add", new AddPageGenerator());
 
 //
 //        try {
