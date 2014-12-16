@@ -31,6 +31,16 @@ public class Bean {
         }
         return map;
     }
+    public Map<String, BeanField> getFieldMap(){
+        if(CollectionUtils.isEmpty(fields)){
+            return null;
+        }
+        Map<String, BeanField> map = new HashMap<String, BeanField>();
+        for(int i=0; i < fields.size(); i ++){
+            map.put(fields.get(i).getName(), fields.get(i));
+        }
+        return map;
+    }
     public String getTable() {
         return table;
     }

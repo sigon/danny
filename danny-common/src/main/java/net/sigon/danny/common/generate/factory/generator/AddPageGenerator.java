@@ -1,5 +1,16 @@
 package net.sigon.danny.common.generate.factory.generator;
 
+import net.sigon.danny.common.generate.bean.Bean;
+import net.sigon.danny.common.generate.bean.BeanField;
+import net.sigon.danny.common.generate.bean.Module;
+import net.sigon.danny.common.generate.factory.BaseGenerator;
+import org.apache.commons.lang.StringUtils;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sigon
@@ -7,5 +18,46 @@ package net.sigon.danny.common.generate.factory.generator;
  * Time: 下午9:23
  * To change this template use File | Settings | File Templates.
  */
-public class AddPageGenerator {
+public class AddPageGenerator extends BaseGenerator {
+
+    private String staticPath;
+    @Override
+    public String getTemplate() {
+        return "/page/add.ftl";
+    }
+
+    @Override
+    public String getStaticPath() {
+        return staticPath;
+    }
+
+    @Override
+    public void trans(Map<String, Object> map) {
+        Bean bean = (Bean)map.get("bean");
+        Module module = (Module)map.get("module");
+        String className = bean.getBeanPackage() + "." + StringUtils.capitalize(bean.getTable());
+
+        Map<String, BeanField> fieldMap = bean.getFieldMap();
+        List<BeanField> fieldList = new ArrayList<BeanField>();
+        try {
+            Class clazz = Class.forName(className);
+            Field[] fields = clazz.getDeclaredFields();
+            for(Field f:fields){
+                if(module.getIgnoreFields().indexOf(f.getName()) != -1){
+                    continue;
+                }
+                if(fieldMap != null && fieldMap.get(f.getName()) != null){
+                    fieldList.add(fieldMap.get(f.getName()));
+                    continue;
+                }
+                BeanField field = new BeanField();
+                field.setName(f.getName());
+                fieldList.add(field);
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        map.put("fields", fieldList);
+    }
 }
