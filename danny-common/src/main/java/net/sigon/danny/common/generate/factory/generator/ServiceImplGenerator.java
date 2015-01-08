@@ -47,7 +47,7 @@ public class ServiceImplGenerator extends BaseGenerator {
         //首字母开头的domain名
         map.put("beanName",StringUtils.capitalize(bean.getTable()));
         //类开发负责人
-        map.put("author","石光");
+        map.put("author","sigon");
         //类生成时间
         map.put("date",new Date());
         map.put("fields", bean.getFields());

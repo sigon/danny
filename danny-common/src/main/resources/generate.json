@@ -1,34 +1,32 @@
 {
-    "classPaths":["/Users/sigon/.m2/repository/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar",
+    "classPaths":[
         "/Users/sigon/workspace/aunewtop-common/aunewtop-common-domain/target/aunewtop-common-domain-1.0-SNAPSHOT.jar"],
-    "jdbcConnection":{"driverClass":"com.mysql.jdbc.Driver", "connectionURL":"jdbc:mysql://192.168.1.203:3306/gatewaydbs", "userId":"root", "password":"321"},
+
     "generates":[
         {
-            "ftlpath":"/Users/sigon/workspace/trader/trader-web/src/main/webapp/WEB-INF/template",
-            "servicePath":"/Users/sigon/workspace/trader/trader-service/src/main/java",
-            "servicePackage":"net.sigon.danny.service",
-            "controllerPath":"/Users/sigon/workspace/trader/trader-web/src/main/java",
-            "controllerPackage":"net.sigon.danny.controller",
-            "mapperPackage":"com.aunewtop.dao.mapper",
+            "ftlpath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-web/src/main/webapp/WEB-INF/template",
+            "paramPath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-domain/src/main/java",
+            "servicePath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-service/src/main/java",
+            "servicePackage":"com.aunewtop.trader.service",
+            "controllerPath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-web/src/main/java",
+            "controllerPackage":"com.aunewtop.trader.web.action",
+            "mapperPackage":"com.aunewtop.common.dao.mapper",
             "beans":[
                 {
-                    "table":"merchant",
+                    "table":"contact",
                     "beanPackage":"com.aunewtop.common.domain.model",
                     "paramPackage":"com.aunewtop.trader.domain.param",
                     "primaryKey":"id",
                     "fields":[
                         {
-                            "name":"status",
+                            "name":"type",
                             "type":"select",
-                            "enumtype":"net.sigon.dannydomain.StatusEnum",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
                             "search":"select"
-                        },{
-                            "name":"birthday",
-                            "type":"date"
                         },{
                             "name":"name",
                             "type":"text",
-                            "enumtype":"net.sigon.dannydomain.StatusEnum",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
                             "search":"text",
                             "required":true,
                             "pattern":"\\d{2,10}",
@@ -46,15 +44,137 @@
                     "modules":[
                         {
                             "type":"add",
-                            "template":"/common/add.ftl",
+                            "template":"/contact/add.ftl",
                             "ignoreFields":"password,createDate,modifyDate"
                         },{
                             "type":"edit",
-                            "template":"/common/edit.ftl",
+                            "template":"/contact/edit.ftl",
                             "ignoreFields":"password,createDate,modifyDate"
                         },{
                             "type":"list",
-                            "template":"/common/list.ftl",
+                            "template":"/contact/list.ftl",
+                            "delete":true
+                        }
+                    ]
+                },
+                {
+                    "table":"bankAccount",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"currency",
+                            "type":"select",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
+                            "search":"select"
+                        },{
+                            "name":"birthday",
+                            "type":"date"
+                        },{
+                            "name":"registerBank",
+                            "type":"text",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
+                            "search":"text",
+                            "required":true,
+                            "pattern":"\\d{4,15}",
+                            "showList":"开户银行"
+                        },{
+                            "name":"account",
+                            "type":"text",
+                            "search":"between",
+                            "showList":"account"
+                        },{
+                            "name":"accountNum",
+                            "showList":"account num"
+                        }
+                    ],
+                    "modules":[
+                        {
+                            "type":"add",
+                            "template":"/bankAccount/add.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"edit",
+                            "template":"/bankAccount/edit.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"list",
+                            "template":"/bankAccount/list.ftl",
+                            "delete":true
+                        }
+                    ]
+                },
+                {
+                    "table":"paper",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"merchantType",
+                            "type":"select",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
+                            "search":"select"
+                        },{
+                            "name":"idName",
+                            "type":"text",
+                            "search":"text"
+                        },{
+                            "name":"idType",
+                            "type":"select",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
+                            "search":"select",
+                            "required":true,
+                            "showList":"paper type"
+                        }
+                    ],
+                    "modules":[
+                        {
+                            "type":"add",
+                            "template":"/paper/add.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"edit",
+                            "template":"/paper/edit.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"list",
+                            "template":"/paper/list.ftl",
+                            "delete":true
+                        }
+                    ]
+                },
+                {
+                    "table":"address",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"country",
+                            "type":"select",
+                            "enumtype":"com.aunewtop.common.domain.StatusEnum",
+                            "search":"select"
+                        },{
+                            "name":"modifyDate",
+                            "type":"date",
+                            "search":"between",
+                            "showList":"modify date"
+                        }
+                    ],
+                    "modules":[
+                        {
+                            "type":"add",
+                            "template":"/address/add.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"edit",
+                            "template":"/address/edit.ftl",
+                            "ignoreFields":"password,createDate,modifyDate"
+                        },{
+                            "type":"list",
+                            "template":"/address/list.ftl",
                             "delete":true
                         }
                     ]

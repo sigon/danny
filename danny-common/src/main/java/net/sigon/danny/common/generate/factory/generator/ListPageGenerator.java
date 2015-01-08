@@ -30,7 +30,5 @@ public class ListPageGenerator extends BaseGenerator{
         Generate generate = (Generate)map.get("generate");
         Module module = (Module)map.get("module");
         staticPath = generate.getFtlpath() + module.getTemplate();
-
-
     }
 }

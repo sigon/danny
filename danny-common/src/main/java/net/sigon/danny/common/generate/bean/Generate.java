@@ -12,6 +12,7 @@ import java.util.List;
 public class Generate {
     private String id;
     private String ftlpath;
+    private String paramPath;
     private String servicePath;
     private String servicePackage;
     private String controllerPath;
@@ -82,5 +83,13 @@ public class Generate {
 
     public void setBeans(List<Bean> beans) {
         this.beans = beans;
+    }
+
+    public String getParamPath() {
+        return paramPath;
+    }
+
+    public void setParamPath(String paramPath) {
+        this.paramPath = paramPath;
     }
 }

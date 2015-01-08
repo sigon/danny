@@ -11,6 +11,7 @@ import java.util.List;
 /**
 * User: ${author}
 * Date: ${date?datetime}
+* auto Generator created.
 */
 public interface ${beanName}Service {
 
@@ -18,9 +19,9 @@ public interface ${beanName}Service {
 
     public int update(${beanName} ${packageName});
 
-    public User get(String id);
+    public ${beanName} get(Integer id);
 
     public Page<${beanName}> find${beanName}List(${beanName}Param ${packageName}, Pageable pageable);
 
-    public int delete(String id);
+    public int delete(Integer id);
 }
