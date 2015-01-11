@@ -26,22 +26,22 @@ public class ${beanName}Controller extends BaseController {
     private ${beanName}Service ${bean.table}Service;
 
     @RequestMapping(value = "/list", method = { RequestMethod.GET,RequestMethod.POST })
-    public String list(${beanName}Param ${bean.table}Param,Pageable pageable, ModelMap modelMap) {
-        modelMap.addAttribute("page",${bean.table}Service.find${beanName}List(${bean.table}Param, pageable));
+    public String list(${beanName}Param ${bean.table}Param,Pageable pageable, ModelMap modelMap, HttpServletRequest request) {
+        modelMap.addAttribute("page",${bean.table}Service.find${beanName}List(${bean.table}Param, transPage(request,pageable)));
         modelMap.addAttribute("${bean.table}", ${bean.table}Param);
         return "/${bean.table}/list";
     }
 
-    @RequestMapping(value = "/save", method = {RequestMethod.POST })
-    public String doEdit(${beanName} ${bean.table}, ModelMap model,RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/update", method = {RequestMethod.POST })
+    public String update(${beanName} ${bean.table}, ModelMap model) {
         int result = ${bean.table}Service.update(${bean.table});
-        return getResultPage(result,"Edit",redirectAttributes);
+        return getResultJson(result, "Update");
     }
 
-    @RequestMapping(value = "/doAdd", method = {RequestMethod.POST })
-    public String doAdd(${beanName} ${bean.table}, ModelMap model,RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/save", method = {RequestMethod.POST })
+    public String save(${beanName} ${bean.table}, ModelMap model) {
         int result = ${bean.table}Service.insert(${bean.table});
-        return getResultPage(result,"Add",redirectAttributes);
+        return getResultJson(result, "Add");
     }
 
     @RequestMapping(value = "/edit", method = { RequestMethod.GET,RequestMethod.POST })
@@ -57,13 +57,13 @@ public class ${beanName}Controller extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/delete", method = { RequestMethod.GET,RequestMethod.POST })
-    public String delete(Integer[] ids,ModelMap model,RedirectAttributes redirectAttributes) {
+    public String delete(Integer[] ids,ModelMap model) {
         if(ids !=null && ids.length > 0){
             for(Integer id:ids){
                 ${bean.table}Service.delete(id);
             }
         }
 
-        return getResultPage(1,"Delete",redirectAttributes);
+        return getResultJson(result, "Delete");
     }
 }

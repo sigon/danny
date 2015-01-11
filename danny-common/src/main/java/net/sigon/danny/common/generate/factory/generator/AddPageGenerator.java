@@ -51,6 +51,9 @@ public class AddPageGenerator extends BaseGenerator {
                 if(module.getIgnoreFields().indexOf(f.getName()) != -1){
                     continue;
                 }
+                if(bean.getPrimaryKey().equals(f.getName())){
+                    continue;
+                }
                 if(fieldMap != null && fieldMap.get(f.getName()) != null){
                     fieldList.add(fieldMap.get(f.getName()));
                     continue;

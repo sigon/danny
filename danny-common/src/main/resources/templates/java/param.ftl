@@ -1,12 +1,13 @@
 package ${bean.paramPackage};
 
 import java.util.Date;
+import java.io.Serializable;
 /**
 * User: ${author}
 * Date: ${date?datetime}
 * auto Generator created.
 */
-public class ${bean.nameUpper}Param {
+public class ${bean.nameUpper}Param implements Serializable{
 
 <#list bean.fields as field>
     <#if field.search??>

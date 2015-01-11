@@ -19,17 +19,10 @@
 <h1 data-icon="1">${bean.nameUpper}[#include "/include/user.ftl"]</h1>
     [#include "/include/header.ftl"]
     <div class="pages">
-        <nav class="pages_nav">
-            [#if nav == "${bean.table}Add"]
-                <a href="#" class="on">${bean.nameUpper} Add</a>
-            [/#if]
-            [#if nav == "${bean.table}Update"]
-                <a href="#" class="on">${bean.nameUpper} Update</a>
-            [/#if]
-        </nav>
+        [#include "/include/nav.ftl"]
         <div class="page">
 
-            <form id="inputForm" method="post" class="form">
+            <form id="inputForm" method="post" class="form" action="<@show>method</@show>">
                     <input type="hidden" name="${bean.primaryKey}" value="<@show>${bean.table}.${bean.primaryKey}?if_exists</@show>">
                     <#list fields as field>
                         <#if field.type??>
