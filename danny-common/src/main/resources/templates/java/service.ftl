@@ -19,9 +19,9 @@ public interface ${beanName}Service {
 
     public int update(${beanName} ${packageName});
 
-    public ${beanName} get(Integer id);
+    public ${beanName} get(Long id);
 
     public Page<${beanName}> find${beanName}List(${beanName}Param ${packageName}, Pageable pageable);
 
-    public int delete(Integer id);
+    public int delete(Long id);
 }

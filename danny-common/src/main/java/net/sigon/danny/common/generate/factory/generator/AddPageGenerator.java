@@ -39,7 +39,7 @@ public class AddPageGenerator extends BaseGenerator {
         Generate generate = (Generate)map.get("generate");
         Module module = (Module)map.get("module");
 
-        staticPath = generate.getFtlpath() + module.getTemplate();
+        staticPath = generate.getFtlpath() + "/" + bean.getModuleName() + "/add.ftl";
         String className = bean.getBeanPackage() + "." + StringUtils.capitalize(bean.getTable());
 
         Map<String, BeanField> fieldMap = bean.getFieldMap();

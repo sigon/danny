@@ -1,22 +1,22 @@
 <#ftl/>
-[#assign title="User List"]
-[#assign header="user"]
-[#assign nav="traderList"]
+[#assign title="${bean.nameUpper} List"]
+[#assign header="${bean.table}"]
+[#assign nav="${bean.table}List"]
 <!DOCTYPE html>
 <html>
 <head>
 [#include "/include/head.ftl"]
     <script src="/js/datepicker/wdatepicker.js" type="text/javascript"></script>
-    <#if msg??>
+    [#if msg??]
     <script>
         seajs.use("alert",function(alertM){
-            alertM("${msg}");
+            alertM("<@show>msg</@show>");
         });
     </script>
-    </#if>
+    [/#if]
 </head>
 <body>
-<h1 data-icon="1">${bean.table}[#include "/include/user.ftl"]</h1>
+<h1 data-icon="1">${bean.nameUpper}[#include "/include/user.ftl"]</h1>
 [#include "/include/header.ftl"]
 <div class="pages">
 [#include "/include/nav.ftl"]
@@ -33,7 +33,7 @@
                         <#if field.search == "text">
                         <p class="w50p">
                             <label class="f_info">${field.nameUpper}</label>
-                            <input type="text" id="${field.name}" name="${field.name}" value="<@show>${bean.table}.name</@show>" placeholder="${field.name}">
+                            <input type="text" id="${field.name}" name="${field.name}" value="<@show>${bean.table}.${field.name}</@show>" placeholder="${field.name}">
                         </p>
                         </#if>
                         <#if field.search == "between">
@@ -50,7 +50,7 @@
                         <p class="w50p">
                             <label class="f_info">${field.nameUpper}</label>
                             <select id="${field.name}" name="${field.name}">
-                                [#list ${field.enumName}Enum as enum]
+                                [#list ${field.lowerEnum}s as enum]
                                     <option value="<@show>enum.id</@show>"><@show>enum.desc</@show></option>
                                 [/#list]
                             </select>
@@ -85,12 +85,17 @@
                         </#if>
                     </#list>
                         <td>
-                            <#if bean.moduleMap["edit"]??>
-                            <a href="/edit.action?${bean.primaryKey}=<@show>item.id</@show>" class="btn edit">Edit</a>
-                            </#if>
-                            <#if bean.moduleMap["delete"]??>
-                                <a href="/delete.action?${bean.primaryKey}=<@show>item.id</@show>" class="btn delete">Delete</a>
-                            </#if>
+                            <span class="btn_i item_menu">
+                                o<span data-itemid="<@show>item.${bean.primaryKey}</@show>">
+                                    <#if module.edit??>
+                                        <a href="/edit.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>" class="btn edit">Edit</a>
+                                    </#if>
+                                    <#if module.delete??>
+                                        <a href="/delete.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>" class="btn delete">Delete</a>
+                                    </#if>
+                                </span>
+                            </span>
+
                         </td>
                     </tr>
                 [/#list]

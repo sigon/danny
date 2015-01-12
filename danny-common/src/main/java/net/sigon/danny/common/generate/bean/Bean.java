@@ -19,9 +19,16 @@ public class Bean {
     private String beanPackage;
     private String paramPackage;
     private String primaryKey;
+    private String moduleName;
     private List<BeanField> fields;
     private List<Module> modules;
 
+    public String getKeyUpper(){
+        if(StringUtils.isBlank(primaryKey)){
+            return null;
+        }
+        return primaryKey.substring(0, 1).toLowerCase() + primaryKey.substring(1);
+    }
     public String getNameUpper() {
         if(StringUtils.isBlank(table)){
             return null;
@@ -95,5 +102,13 @@ public class Bean {
 
     public void setParamPackage(String paramPackage) {
         this.paramPackage = paramPackage;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
     }
 }

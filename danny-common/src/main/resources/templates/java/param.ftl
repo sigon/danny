@@ -8,7 +8,7 @@ import java.io.Serializable;
 * auto Generator created.
 */
 public class ${bean.nameUpper}Param implements Serializable{
-
+    private Long ${bean.primaryKey};
 <#list bean.fields as field>
     <#if field.search??>
         <#if field.search == "text">
@@ -29,6 +29,13 @@ public class ${bean.nameUpper}Param implements Serializable{
     </#if>
 </#list>
 
+    public Long get${bean.keyUpper}() {
+        return ${bean.primaryKey};
+    }
+
+    public void set${bean.keyUpper}(Long ${bean.keyUpper}) {
+        this.${bean.keyUpper} = ${bean.keyUpper};
+    }
 <#list bean.fields as field>
     <#if field.search??>
         <#if field.search == "text">

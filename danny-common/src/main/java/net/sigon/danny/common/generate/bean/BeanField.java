@@ -46,6 +46,12 @@ public class BeanField {
         return enumtype.substring(enumtype.lastIndexOf(".") + 1);
     }
 
+    public String getLowerEnum(){
+        if(StringUtils.isBlank(enumtype)){
+            return null;
+        }
+        return getEnumName().substring(0, 1).toLowerCase() + getEnumName().substring(1);
+    }
     public String getShowList() {
         return showList;
     }

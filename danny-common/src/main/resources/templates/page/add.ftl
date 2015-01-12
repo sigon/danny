@@ -3,7 +3,7 @@
     [#assign method="update"]
     [#assign methodTitle="Update"]
 [#else]
-    [#assign method="add"]
+    [#assign method="save"]
     [#assign methodTitle="Add"]
 [/#if]
 [#assign title="${bean.nameUpper} <@show>methodTitle</@show>"]
@@ -22,14 +22,14 @@
         [#include "/include/nav.ftl"]
         <div class="page">
 
-            <form id="inputForm" method="post" class="form" action="<@show>method</@show>">
+            <form id="inputForm" method="post" class="form" action="<@show>method</@show>.action">
                     <input type="hidden" name="${bean.primaryKey}" value="<@show>${bean.table}.${bean.primaryKey}?if_exists</@show>">
                     <#list fields as field>
                         <#if field.type??>
                             <#if field.type == "radio">
                         <p>
                             <label class="f_info">${field.nameUpper}</label>
-                            [#list ${field.enumName}s as item]
+                            [#list ${field.lowerEnum}s as item]
                             <input type="radio" required name="${field.name}" value="<@show>item.id</@show>" id="${field.name}<@show>item.id</@show>" [#if item.id==${bean.table}.${field.name}] checked="checked"[/#if]/>
                             <label for="${field.name}<@show>item.id</@show>" class="f_for"><@show>item.desc</@show></label>
                             [/#list]
@@ -39,7 +39,7 @@
                             <label class="f_info">${field.nameUpper}</label>
                             <select id="${field.name}" name="${field.name}" <#if field.required??>required</#if>>
                                 <option value="">select...</option>
-                                [#list ${field.enumName}s as item]
+                                [#list ${field.lowerEnum}s as item]
                                 <option value="<@show>item.id</@show>" [#if item.id==${bean.table}.enable] selected="selected" [/#if]><@show>item.desc</@show></option>
                                 [/#list]
                             </select>

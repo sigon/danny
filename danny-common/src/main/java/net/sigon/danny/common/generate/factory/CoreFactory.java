@@ -73,7 +73,7 @@ import java.util.Map;
     public static void main(String [] args){
         CoreFactory coreFactory = new CoreFactory();
         try {
-            coreFactory.execute(ConfigurationFactory.create("generate.json"));
+            coreFactory.execute(ConfigurationFactory.create("generateMerchant.json"));
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

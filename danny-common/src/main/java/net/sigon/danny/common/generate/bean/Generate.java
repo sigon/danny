@@ -10,6 +10,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Generate {
+    private String project;
     private String id;
     private String ftlpath;
     private String paramPath;
@@ -91,5 +92,13 @@ public class Generate {
 
     public void setParamPath(String paramPath) {
         this.paramPath = paramPath;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
     }
 }

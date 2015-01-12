@@ -9,8 +9,8 @@ package net.sigon.danny.common.generate.bean;
  */
 public class Module {
     private String type;
-    private String template;
     private Boolean delete;
+    private Boolean edit;
     private String ignoreFields;
 
     public String getIgnoreFields() {
@@ -37,11 +37,11 @@ public class Module {
         this.type = type;
     }
 
-    public String getTemplate() {
-        return template;
+    public Boolean getEdit() {
+        return edit;
     }
 
-    public void setTemplate(String template) {
-        this.template = template;
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 }

@@ -37,7 +37,7 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
         return ${packageName}Mapper.updateByPrimaryKeySelective(${packageName});
     }
 
-    public ${beanName} get(Integer id) {
+    public ${beanName} get(Long id) {
         return ${packageName}Mapper.selectByPrimaryKey(id);
     }
 
@@ -59,14 +59,14 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
         try {
             if (${packageName}!=null&&StringUtils.isNotBlank(${packageName}.getStart${field.nameUpper}())){
                 Date startTime = sdf.parse(${packageName}.getStart${field.nameUpper}());
-                criteria.and${field.nameUpper}GreaterThanOrEqualTo(sdf.format(startTime));
+                criteria.and${field.nameUpper}GreaterThanOrEqualTo(startTime);
             }
             if (${packageName}!=null&&StringUtils.isNotBlank(${packageName}.getEnd${field.nameUpper}())){
                 Date endTime = sdf.parse(${packageName}.getEnd${field.nameUpper}());
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(endTime);
                 calendar.add(Calendar.DATE, 1);
-                criteria.and${field.nameUpper}LessThanOrEqualTo(sdf.format(calendar.getTime()));
+                criteria.and${field.nameUpper}LessThanOrEqualTo(calendar.getTime());
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
                 [#--//如果不是select 或者 checkbox，radio之类的，一律实现为模糊查询模式--]
                 [#if field.search == 'text']
         if (${packageName}!=null&& ${packageName}.get${field.nameUpper}() != null){
-            criteria.and${field.nameUpper}Like("%" + ${packageName}.get${field.nameUpper}().replaceAll(" ","") + "%");
+            criteria.and${field.nameUpper}Like("%" + ${packageName}.get${field.nameUpper}() + "%");
         }
                 [/#if]
 
@@ -95,7 +95,7 @@ public class ${beanName}ServiceImpl implements ${beanName}Service {
         return new Page<${beanName}>(list,count,pageable);
     }
 
-    public int delete(Integer id){
+    public int delete(Long id){
         return ${packageName}Mapper.deleteByPrimaryKey(id);
     }
 }
