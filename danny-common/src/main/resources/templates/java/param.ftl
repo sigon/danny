@@ -64,7 +64,7 @@ public class ${bean.nameUpper}Param implements Serializable{
         return end${field.nameUpper};
     }
 
-    public void setEnd${field.nameUpper}(${type} start${field.nameUpper}) {
+    public void setEnd${field.nameUpper}(${type} end${field.nameUpper}) {
         this.end${field.nameUpper} = end${field.nameUpper};
     }
         </#if>

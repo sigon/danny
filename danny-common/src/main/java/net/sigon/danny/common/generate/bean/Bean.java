@@ -27,7 +27,7 @@ public class Bean {
         if(StringUtils.isBlank(primaryKey)){
             return null;
         }
-        return primaryKey.substring(0, 1).toLowerCase() + primaryKey.substring(1);
+        return primaryKey.substring(0, 1).toUpperCase() + primaryKey.substring(1);
     }
     public String getNameUpper() {
         if(StringUtils.isBlank(table)){

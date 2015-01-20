@@ -39,11 +39,18 @@
                             <label class="f_info">${field.nameUpper}</label>
                             <select id="${field.name}" name="${field.name}" <#if field.required??>required</#if>>
                                 <option value="">select...</option>
+                                <#if field.enumtype??>
                                 [#list ${field.lowerEnum}s as item]
                                 <option value="<@show>item.id</@show>" [#if item.id==${bean.table}.enable] selected="selected" [/#if]><@show>item.desc</@show></option>
                                 [/#list]
+                                </#if>
                             </select>
                         </p>
+                            <#elseif field.type == "text">
+                                <p>
+                                    <label class="f_info">${field.nameUpper} <#if field.required??><span class="red">*</span></#if></label>
+                                    <input type="text" name="${field.name}" <#if field.required??>required</#if> <#if field.pattern??>pattern="${field.pattern}"</#if> value="<@show>${bean.table}.${field.name}?if_exists</@show>" placeholder=""/><span class="gray">${field.nameUpper}</span>
+                                </p>
                             </#if>
                         <#else>
                     <p>

@@ -14,8 +14,8 @@
             "mapperPackage":"com.aunewtop.common.dao.mapper",
             "beans":[
                 {
-                    "table":"exchangeCatalog",
-                    "moduleName":"exchangeCatalog",
+                    "table":"paycompanyInfo",
+                    "moduleName":"paycompanyinfo",
                     "beanPackage":"com.aunewtop.common.domain.model",
                     "paramPackage":"com.aunewtop.trader.domain.param",
                     "primaryKey":"id",
@@ -25,20 +25,59 @@
                             "type":"text",
                             "search":"text",
                             "required":true,
+                            "pattern":"\\w{2,25}",
+                            "showList":"Name"
+                        },{
+                            "name":"accountNo",
+                            "type":"text",
+                            "required":true,
                             "pattern":"\\d{2,25}",
                             "showList":"Name"
                         },{
-                            "name":"enable",
-                            "type":"radio",
-                            "enumtype":"com.aunewtop.common.domain.enumtype.EnableEnum",
-                            "showList":"Enable"
+                            "name":"payRate",
+                            "type":"text",
+                            "required":true,
+                            "pattern":"\\d{1,11}",
+                            "showList":"Name"
+                        }
+                    ],
+                    "modules":[
+                        {
+                            "type":"add",
+                            "ignoreFields":"status,createDate,modifyDate"
                         },{
-                            "name":"remark",
-                            "required":true
+                            "type":"list",
+                            "delete":true,
+                            "edit":true
+                        }
+                    ]
+                },{
+                    "table":"paycompanyBank",
+                    "moduleName":"paycompanybank",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"name",
+                            "type":"text",
+                            "search":"text",
+                            "required":true,
+                            "pattern":"\\w{2,25}",
+                            "showList":"Name"
+                        },{
+                            "name":"bankName",
+                            "type":"text",
+                            "showList":"Bank Name"
+                        },{
+                            "name":"bankNo",
+                            "type":"text",
+                            "required":true,
+                            "pattern":"\\d{2,25}",
+                            "showList":"Name"
                         },{
                             "name":"modifyDate",
                             "type":"date",
-                            "search":"between",
                             "showList":"Modify Date"
                         }
                     ],

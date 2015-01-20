@@ -22,6 +22,7 @@
 [#include "/include/nav.ftl"]
     <div class="page">
         <form id="listForm" action="list.action" method="post">
+            <input type="hidden" id="queryint" name="queryint" value="1">
             <menu>
                 <#if bean.moduleMap["add"]??>
                     <a href="add.action" class="btn add" data-icon="a">Create New</a>
@@ -81,17 +82,17 @@
                     <tr>
                     <#list bean.fields as field>
                         <#if field.showList??>
-                            <td><@show>item.${field.name}</@show></td>
+                            <td><@show>item.${field.name}<#if field.type == "date">?datetime</#if></@show></td>
                         </#if>
                     </#list>
                         <td>
                             <span class="btn_i item_menu">
                                 o<span data-itemid="<@show>item.${bean.primaryKey}</@show>">
                                     <#if module.edit??>
-                                        <a href="/edit.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>" class="btn edit">Edit</a>
+                                        <a href="edit.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>"  class="edit" data-icon="e">Edit</a>
                                     </#if>
                                     <#if module.delete??>
-                                        <a href="/delete.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>" class="btn delete">Delete</a>
+                                        <a href="delete.action?${bean.primaryKey}=<@show>item.${bean.primaryKey}</@show>"  class="chg_stu" data-icon="d">Delete</a>
                                     </#if>
                                 </span>
                             </span>

@@ -14,27 +14,27 @@
             "mapperPackage":"com.aunewtop.common.dao.mapper",
             "beans":[
                 {
-                    "table":"exchangeCatalog",
-                    "moduleName":"exchangeCatalog",
+                    "table":"merchantProductLog",
+                    "moduleName":"productlog",
                     "beanPackage":"com.aunewtop.common.domain.model",
                     "paramPackage":"com.aunewtop.trader.domain.param",
                     "primaryKey":"id",
                     "fields":[
                         {
-                            "name":"name",
+                            "name":"merchantCode",
                             "type":"text",
                             "search":"text",
-                            "required":true,
-                            "pattern":"\\d{2,25}",
-                            "showList":"Name"
+                            "showList":"Merchant Code"
                         },{
-                            "name":"enable",
-                            "type":"radio",
-                            "enumtype":"com.aunewtop.common.domain.enumtype.EnableEnum",
-                            "showList":"Enable"
+                            "name":"sku",
+                            "type":"text",
+                            "showList":"SKU"
                         },{
-                            "name":"remark",
-                            "required":true
+                            "name":"flag",
+                            "type":"select",
+                            "search":"select",
+                            "enumtype":"com.aunewtop.common.domain.enumtype.ProductFlagEnum",
+                            "showList":"Flag"
                         },{
                             "name":"modifyDate",
                             "type":"date",
@@ -42,14 +42,8 @@
                             "showList":"Modify Date"
                         }
                     ],
-                    "modules":[
-                        {
-                            "type":"add",
-                            "ignoreFields":"status,createDate,modifyDate"
-                        },{
-                            "type":"list",
-                            "delete":true,
-                            "edit":true
+                    "modules":[{
+                            "type":"list"
                         }
                     ]
                 }

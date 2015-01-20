@@ -32,8 +32,9 @@ public class ${beanName}Controller extends BaseController {
 
     @RequestMapping(value = "/list", method = { RequestMethod.GET,RequestMethod.POST })
     public String list(${beanName}Param ${bean.table}Param,Pageable pageable, ModelMap modelMap, HttpServletRequest request) {
-        modelMap.addAttribute("page",${bean.table}Service.find${beanName}List(${bean.table}Param, transPage(request,pageable)));
-        modelMap.addAttribute("${bean.table}", ${bean.table}Param);
+        ${beanName}Param param = (${beanName}Param)transParam(request, ${bean.table}Param, pageable);
+        modelMap.addAttribute("page",${bean.table}Service.find${beanName}List(param, transPage(request,pageable)));
+        modelMap.addAttribute("${bean.table}", param);
         [#list bean.fields as field]
             [#if field.enumtype??]
         modelMap.addAttribute("${field.lowerEnum}s", ${field.enumName}.values());
