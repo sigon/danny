@@ -5,7 +5,7 @@ import ${bean.beanPackage}.${beanName};
 import ${bean.beanPackage}.${beanName}Example;
 import com.aunewtop.common.domain.page.Page;
 import com.aunewtop.common.domain.page.Pageable;
-import ${bean.paramPackage}.${beanName}Param;
+import ${generate.paramPackage}.${beanName}Param;
 import ${generate.servicePackage}.${bean.table}.${beanName}Service;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
-* User: ${author}
+* User: ${generate.author}
 * Date: ${date?datetime}
 * auto Generator created.
 */

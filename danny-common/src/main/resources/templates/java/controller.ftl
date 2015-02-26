@@ -3,7 +3,7 @@ package ${generate.controllerPackage}.${packageName};
 import ${bean.beanPackage}.${beanName};
 import com.aunewtop.common.domain.page.Pageable;
 import ${generate.servicePackage}.${bean.table}.${beanName}Service;
-import ${bean.paramPackage}.${bean.nameUpper}Param;
+import ${generate.paramPackage}.${bean.nameUpper}Param;
 [#list bean.fields as field]
     [#if field.enumtype??]
 import ${field.enumtype};
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
-* User: ${author}
+* User: ${generate.author}
 * Date: ${date?datetime}
 * auto Generator created.
 */
@@ -43,12 +43,14 @@ public class ${beanName}Controller extends BaseController {
         return "/${bean.table}/list";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/update", method = {RequestMethod.POST })
     public String update(${beanName} ${bean.table}, ModelMap model) {
         int result = ${bean.table}Service.update(${bean.table});
         return getResultJson(result, "Update");
     }
 
+    @ResponseBody
     @RequestMapping(value = "/save", method = {RequestMethod.POST })
     public String save(${beanName} ${bean.table}, ModelMap model) {
         int result = ${bean.table}Service.insert(${bean.table});
@@ -63,7 +65,7 @@ public class ${beanName}Controller extends BaseController {
         model.addAttribute("${field.lowerEnum}s", ${field.enumName}.values());
             [/#if]
         [/#list]
-        return "/${bean.table}/edit";
+        return "/${bean.table}/add";
     }
 
     @RequestMapping(value = "/add", method = { RequestMethod.GET,RequestMethod.POST })

@@ -16,8 +16,6 @@ import java.util.Map;
  */
 public class Bean {
     private String table;
-    private String beanPackage;
-    private String paramPackage;
     private String primaryKey;
     private String moduleName;
     private List<BeanField> fields;
@@ -65,11 +63,7 @@ public class Bean {
     }
 
     public String getBeanPackage() {
-        return beanPackage;
-    }
-
-    public void setBeanPackage(String beanPackage) {
-        this.beanPackage = beanPackage;
+        return "com.aunewtop.common.domain.model";
     }
 
     public String getPrimaryKey() {
@@ -94,14 +88,6 @@ public class Bean {
 
     public void setModules(List<Module> modules) {
         this.modules = modules;
-    }
-
-    public String getParamPackage() {
-        return paramPackage;
-    }
-
-    public void setParamPackage(String paramPackage) {
-        this.paramPackage = paramPackage;
     }
 
     public String getModuleName() {

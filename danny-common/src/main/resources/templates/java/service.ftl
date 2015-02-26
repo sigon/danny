@@ -4,12 +4,12 @@ import ${bean.beanPackage}.${beanName};
 import com.aunewtop.common.domain.page.Page;
 import com.aunewtop.common.domain.page.Pageable;
 
-import ${bean.paramPackage}.${beanName}Param;
+import ${generate.paramPackage}.${beanName}Param;
 
 import java.util.List;
 
 /**
-* User: ${author}
+* User: ${generate.author}
 * Date: ${date?datetime}
 * auto Generator created.
 */

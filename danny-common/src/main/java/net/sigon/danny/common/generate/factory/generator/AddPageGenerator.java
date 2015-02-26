@@ -23,9 +23,11 @@ import java.util.Map;
 public class AddPageGenerator extends BaseGenerator {
 
     private String staticPath;
+    private String template;
+
     @Override
     public String getTemplate() {
-        return "/page/add.ftl";
+        return template;
     }
 
     @Override
@@ -40,6 +42,7 @@ public class AddPageGenerator extends BaseGenerator {
         Module module = (Module)map.get("module");
 
         staticPath = generate.getFtlpath() + "/" + bean.getModuleName() + "/add.ftl";
+        template = String.format("/page/%s/add.ftl", generate.getProject());
         String className = bean.getBeanPackage() + "." + StringUtils.capitalize(bean.getTable());
 
         Map<String, BeanField> fieldMap = bean.getFieldMap();

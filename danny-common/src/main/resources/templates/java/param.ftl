@@ -1,9 +1,9 @@
-package ${bean.paramPackage};
+package ${generate.paramPackage};
 
 import java.util.Date;
 import java.io.Serializable;
 /**
-* User: ${author}
+* User: ${generate.author}
 * Date: ${date?datetime}
 * auto Generator created.
 */
@@ -33,8 +33,8 @@ public class ${bean.nameUpper}Param implements Serializable{
         return ${bean.primaryKey};
     }
 
-    public void set${bean.keyUpper}(Long ${bean.keyUpper}) {
-        this.${bean.keyUpper} = ${bean.keyUpper};
+    public void set${bean.keyUpper}(Long ${bean.primaryKey}) {
+        this.${bean.primaryKey} = ${bean.primaryKey};
     }
 <#list bean.fields as field>
     <#if field.search??>

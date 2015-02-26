@@ -11,72 +11,53 @@ import java.util.List;
  */
 public class Generate {
     private String project;
-    private String id;
-    private String ftlpath;
-    private String paramPath;
-    private String servicePath;
-    private String servicePackage;
-    private String controllerPath;
-    private String controllerPackage;
-    private String mapperPackage;
+    private String path;
+    private String author;
     private List<Bean> beans;
 
-
-    public String getId() {
-        return id;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getFtlpath() {
-        return ftlpath;
-    }
-
-    public void setFtlpath(String ftlpath) {
-        this.ftlpath = ftlpath;
+        return String.format("%s/aunewtop-%s-web/src/main/webapp/WEB-INF/template", path, project);
     }
 
     public String getServicePath() {
-        return servicePath;
-    }
-
-    public void setServicePath(String servicePath) {
-        this.servicePath = servicePath;
+        return String.format("%s/aunewtop-%s-service/src/main/java", path, project);
     }
 
     public String getServicePackage() {
-        return servicePackage;
+        return String.format("com.aunewtop.%s.service", project);
     }
 
-    public void setServicePackage(String servicePackage) {
-        this.servicePackage = servicePackage;
-    }
 
     public String getControllerPath() {
-        return controllerPath;
+        return String.format("%s/aunewtop-%s-web/src/main/java", path, project);
     }
 
-    public void setControllerPath(String controllerPath) {
-        this.controllerPath = controllerPath;
-    }
 
     public String getControllerPackage() {
-        return controllerPackage;
+        return String.format("com.aunewtop.%s.web.action", project);
     }
 
-    public void setControllerPackage(String controllerPackage) {
-        this.controllerPackage = controllerPackage;
-    }
 
     public String getMapperPackage() {
-        return mapperPackage;
+        return String.format("com.aunewtop.common.dao.mapper");
     }
 
-    public void setMapperPackage(String mapperPackage) {
-        this.mapperPackage = mapperPackage;
-    }
 
     public List<Bean> getBeans() {
         return beans;
@@ -87,11 +68,11 @@ public class Generate {
     }
 
     public String getParamPath() {
-        return paramPath;
+        return String.format("%s/aunewtop-%s-domain/src/main/java", path, project);
     }
 
-    public void setParamPath(String paramPath) {
-        this.paramPath = paramPath;
+    public String getParamPackage() {
+        return String.format("com.aunewtop.%s.domain.param", project);
     }
 
     public String getProject() {

@@ -1,0 +1,38 @@
+{
+    "classPaths":[
+        "/Users/sigon/workspace/aunewtop-common/aunewtop-common-domain/target/aunewtop-common-domain-1.0-SNAPSHOT.jar"],
+
+    "generates":[
+        {
+            "project":"trader",
+            "author":"sigon",
+            "path":"/Users/sigon/workspace/trader20141220",
+            "beans":[
+                {
+                    "table":"holidayNz",
+                    "moduleName":"holidayNz",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"holiday",
+                            "type":"date",
+                            "showList":"Holiday"
+                        },{
+                            "name":"remark",
+                            "type":"text",
+                            "showList":"Remark"
+                        }
+
+                    ],
+                    "modules":[
+                        {
+                            "type":"list",
+                            "delete":true,
+                            "edit":true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

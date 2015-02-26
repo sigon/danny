@@ -31,9 +31,7 @@ public class ParamGenerator extends BaseGenerator{
     public void trans(Map<String, Object> map) {
         Generate generate = (Generate)map.get("generate");
         Bean bean = (Bean)map.get("bean");
-        staticPath = generate.getParamPath() + "/" + bean.getParamPackage().replaceAll("\\.", "/") + "/" + StringUtils.capitalize(bean.getTable()) + "Param.java";
-        //类开发负责人
-        map.put("author","sigon");
+        staticPath = generate.getParamPath() + "/" + generate.getParamPackage().replaceAll("\\.", "/") + "/" + StringUtils.capitalize(bean.getTable()) + "Param.java";
         //类生成时间
         map.put("date",new Date());
     }

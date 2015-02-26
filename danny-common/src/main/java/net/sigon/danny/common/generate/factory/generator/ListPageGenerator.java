@@ -15,9 +15,10 @@ import java.util.Map;
  */
 public class ListPageGenerator extends BaseGenerator{
     private String staticPath;
+    private String template;
     @Override
     public String getTemplate() {
-        return "/page/list.ftl";
+        return template;
     }
 
     @Override
@@ -30,5 +31,6 @@ public class ListPageGenerator extends BaseGenerator{
         Generate generate = (Generate)map.get("generate");
         Bean bean = (Bean)map.get("bean");
         staticPath = generate.getFtlpath() + "/" + bean.getModuleName() + "/list.ftl";
+        template = String.format("/page/%s/list.ftl", generate.getProject());
     }
 }

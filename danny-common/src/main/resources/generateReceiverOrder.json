@@ -1,0 +1,86 @@
+{
+    "classPaths":[
+        "/Users/sigon/workspace/aunewtop-common/aunewtop-common-domain/target/aunewtop-common-domain-1.0-SNAPSHOT.jar"],
+
+    "generates":[
+        {
+            "project":"trader",
+            "ftlpath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-web/src/main/webapp/WEB-INF/template",
+            "paramPath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-domain/src/main/java",
+            "servicePath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-service/src/main/java",
+            "servicePackage":"com.aunewtop.trader.service",
+            "controllerPath":"/Users/sigon/workspace/trader20141220/aunewtop-trader-web/src/main/java",
+            "controllerPackage":"com.aunewtop.trader.web.action",
+            "mapperPackage":"com.aunewtop.common.dao.mapper",
+            "beans":[
+                {
+                    "table":"receiverOrder",
+                    "moduleName":"receiverOrder",
+                    "beanPackage":"com.aunewtop.common.domain.model",
+                    "paramPackage":"com.aunewtop.trader.domain.param",
+                    "primaryKey":"id",
+                    "fields":[
+                        {
+                            "name":"receiveNo",
+                            "type":"text",
+                            "search":"text",
+                            "showList":"Receive NO"
+                        },{
+                            "name":"productName",
+                            "type":"text",
+                            "showList":"Product Name"
+                        },{
+                            "name":"price",
+                            "type":"text",
+                            "showList":"Price"
+                        },{
+                            "name":"sku",
+                            "type":"text",
+                            "showList":"SKU"
+                        },{
+                            "name":"receiverTel",
+                            "type":"text",
+                            "search":"text",
+                            "showList":"Receiver Tel"
+                        },{
+                            "name":"receiverEmail",
+                            "type":"text",
+                            "search":"text",
+                            "showList":"Receiver Email"
+                        },{
+                            "name":"payeeTel",
+                            "type":"text",
+                            "search":"text",
+                            "showList":"Payee Tel"
+                        },{
+                            "name":"payeeEmail",
+                            "type":"text",
+                            "search":"text",
+                            "showList":"Payee Email"
+                        },{
+                            "name":"remark",
+                            "type":"text",
+                            "showList":"Remark"
+                        },{
+                            "name":"createDate",
+                            "type":"date",
+                            "showList":"Create Date"
+                        },{
+                            "name":"modifyDate",
+                            "type":"date",
+                            "showList":"Modify Date"
+                        }
+
+                    ],
+                    "modules":[
+                        {
+                            "type":"list",
+                            "delete":true,
+                            "edit":true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
