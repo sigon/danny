@@ -15,13 +15,13 @@ subprojects {project->
         repositories {
                 mavenLocal()
                 mavenCentral()
-                maven { url "http://www.aunewtop.com:8081/nexus/content/groups/public/" }
+                maven { url "http://nexushost:8081/nexus/content/groups/public/" }
         }
 
         ext {
                 mavenUsername = 'admin'
                 mavenPassword = '321'
-                nexusUrl = 'http://www.aunewtop.com:8081'
+                nexusUrl = 'http://nexushost:8081'
                 springVersion = "4.2.1.RELEASE"
 
 				
@@ -31,9 +31,8 @@ subprojects {project->
                         'org.slf4j:slf4j-api:1.7.12',
                         "log4j:log4j:1.2.16",
                         'net.sf.json-lib:json-lib:2.4:jdk15'
-
-
                 )
+                testCompile 'junit:junit:4.12'
 
         }
 
@@ -54,7 +53,7 @@ subprojects {project->
                                 //url "http://www.aunewtop.com:8081/nexus/content/repositories/snapshots"
                                 credentials {
                                         username 'admin'
-                                        password '321'
+                                        password 'password'
                                 }
 
                         }
