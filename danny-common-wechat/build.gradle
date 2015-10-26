@@ -1,0 +1,11 @@
+dependencies {
+        compile(
+                "org.springframework:spring-context:$springVersion",
+                'com.thoughtworks.xstream:xstream:1.4.7',
+                'dom4j:dom4j:1.6.1',
+                'commons-lang:commons-lang:2.6',
+                project(':danny-common-secret'),
+                project(':danny-common-util')
+        )
+
+}

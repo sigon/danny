@@ -1,0 +1,7 @@
+archivesBaseName = 'danny-common-secret'
+dependencies {
+        compile(
+
+        )
+
+}

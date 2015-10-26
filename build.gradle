@@ -1,0 +1,79 @@
+allprojects {
+
+        group = 'org.danny.common'
+        version = '0.1-SNAPSHOT'
+}
+
+
+subprojects {project->
+        apply plugin: "java"
+        apply plugin: "idea"
+        apply plugin: 'maven-publish'
+        apply plugin: 'maven'
+
+
+        repositories {
+                mavenLocal()
+                mavenCentral()
+                maven { url "http://www.aunewtop.com:8081/nexus/content/groups/public/" }
+        }
+
+        ext {
+                mavenUsername = 'admin'
+                mavenPassword = '321'
+                nexusUrl = 'http://www.aunewtop.com:8081'
+                springVersion = "4.2.1.RELEASE"
+
+				
+        }
+        dependencies {
+                compile(
+                        'org.slf4j:slf4j-api:1.7.12',
+                        "log4j:log4j:1.2.16",
+                        'net.sf.json-lib:json-lib:2.4:jdk15'
+
+
+                )
+
+        }
+
+        publishing {
+                publications {
+                        maven(MavenPublication) {
+                                groupId rootProject.group
+                                artifactId project.name
+                                version rootProject.version
+
+                                from components.java
+                        }
+                }
+                repositories {
+                        maven {
+                                // change to point to your repo, e.g. http://my.org/repo
+                                url "$nexusUrl/nexus/content/repositories/snapshots/"
+                                //url "http://www.aunewtop.com:8081/nexus/content/repositories/snapshots"
+                                credentials {
+                                        username 'admin'
+                                        password '321'
+                                }
+
+                        }
+                }
+        }
+        uploadArchives {
+                repositories.mavenDeployer {
+                        pom.groupId = group
+                        pom.artifactId = project.name
+                        pom.version = version
+                        // 修改为自己刚才创建的仓库地址
+
+                        repository(url: "$nexusUrl/nexus/content/repositories/releases/") {
+                                authentication(userName: mavenUsername, password: mavenPassword)
+                        }
+                        snapshotRepository(url: "$nexusUrl/nexus/content/repositories/snapshots/") {
+                                authentication(userName: mavenUsername, password: mavenPassword)
+                        }
+                }
+        }
+
+}

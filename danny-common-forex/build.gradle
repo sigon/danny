@@ -1,0 +1,7 @@
+dependencies {
+        compile(
+                'com.google.code.gson:gson:2.3.1',
+                'commons-lang:commons-lang:2.6'
+        )
+        compile project(':danny-common-util')
+}

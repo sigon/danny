@@ -1,0 +1,8 @@
+dependencies {
+        compile project(':danny-common-util')
+        compile(
+                "net.sourceforge.jexcelapi:jxl:2.6.12"
+
+        )
+
+}
