@@ -20,7 +20,7 @@ subprojects {project->
 
         ext {
                 mavenUsername = 'admin'
-                mavenPassword = '321'
+                mavenPassword = 'password'
                 nexusUrl = 'http://nexushost:8081'
                 springVersion = "4.2.1.RELEASE"
 
