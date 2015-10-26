@@ -4,3 +4,5 @@ profiles.xml
 target
 *.war
 *.thmx
+build
+.gradle
