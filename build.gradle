@@ -14,15 +14,16 @@ subprojects {project->
 
         repositories {
                 mavenLocal()
+                //maven { url "http://nexushost:8081/nexus/content/groups/public/" }
+                maven { url "http://localhost:8081/repository/maven-central/" }
                 mavenCentral()
-                maven { url "http://nexushost:8081/nexus/content/groups/public/" }
         }
 
         ext {
                 mavenUsername = 'admin'
                 mavenPassword = 'password'
                 nexusUrl = 'http://nexushost:8081'
-                springVersion = "4.2.1.RELEASE"
+                springVersion = "4.3.3.RELEASE"
 
 				
         }

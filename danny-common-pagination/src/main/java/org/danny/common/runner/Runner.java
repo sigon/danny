@@ -10,8 +10,10 @@ public class Runner {
         String config = Runner.class.getClassLoader().getResource("generator.xml").getFile();
         String[] arg = { "-configfile", config, "-overwrite" };
         ShellRunner.main(arg);
+        Pageable page = new Pageable(1,10);
+
     }
     public static void main(String[] args) {
-        generate();
+      
     }
 }

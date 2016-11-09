@@ -21,7 +21,6 @@
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://127.0.0.1:3306/test" userId="root"
 			password="" />
-
 		<!-- 类型转换 -->
 		<javaTypeResolver>
 			<!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
