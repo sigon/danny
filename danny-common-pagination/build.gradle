@@ -1,5 +1,16 @@
+
+jar {
+        manifest {  //incubating版本，以后版本可能会改API
+                attributes("Main-Class": "org.danny.common.runner.Runner",
+                        "Implementation-Title": "Gradle")
+                attributes 'Class-Path': "mybatis-generator-core-1.3.6-SNAPSHOT.jar"
+        }
+//        into('lib') {
+//                from configurations.runtime
+//        }
+}
 dependencies {
         compile(
         )
-
+        compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.5'
 }

@@ -3,7 +3,7 @@ package org.danny.common.pagination;
 /** 针对当前的mysql做了精简
  * @date 2011-12-1 上午11:36:12
  */
-public class Page {
+public class  Page {
 
     //分页参数
     public static final int PAGE_SIZE = 20;
