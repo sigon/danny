@@ -11,7 +11,6 @@ subprojects {project->
         apply plugin: 'maven-publish'
         apply plugin: 'maven'
 
-
         repositories {
                 mavenLocal()
                 //maven { url "http://nexushost:8081/nexus/content/groups/public/" }
@@ -25,7 +24,7 @@ subprojects {project->
                 nexusUrl = 'http://nexushost:8081'
                 springVersion = "4.3.3.RELEASE"
 
-				
+
         }
         dependencies {
                 compile(
