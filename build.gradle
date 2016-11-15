@@ -47,16 +47,17 @@ subprojects {project->
                         }
                 }
                 repositories {
-                        maven {
-                                // change to point to your repo, e.g. http://my.org/repo
-                                url "$nexusUrl/nexus/content/repositories/snapshots/"
-                                //url "http://www.aunewtop.com:8081/nexus/content/repositories/snapshots"
-                                credentials {
-                                        username 'admin'
-                                        password 'password'
-                                }
-
-                        }
+                        mavenLocal()
+//                        maven {
+//                                // change to point to your repo, e.g. http://my.org/repo
+//                                url "$nexusUrl/repository/maven-snapshots/"
+//                                //url "http://www.aunewtop.com:8081/nexus/content/repositories/snapshots"
+//                                credentials {
+//                                        username 'admin'
+//                                        password 'admin123'
+//                                }
+//
+//                        }
                 }
         }
         uploadArchives {
