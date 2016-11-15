@@ -30,7 +30,7 @@ public class PaginationPlugin extends PluginAdapter {
         sql.addAttribute(new Attribute("id", "MysqlDialectSuffix"));
         XmlElement iff = new XmlElement("if");
         iff.addAttribute(new Attribute("test", "page != null"));
-        iff.addElement(new TextElement("limit #{page.begin},#{page.end}"));
+        iff.addElement(new TextElement("limit #{page.end} offset #{page.begin}"));
         sql.addElement(iff);
         root.addElement(sql);
         return super.sqlMapDocumentGenerated(document, introspectedTable);

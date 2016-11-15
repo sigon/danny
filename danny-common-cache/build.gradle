@@ -2,5 +2,5 @@ dependencies {
         compile(
 
         )
-
+        compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.3'
 }
