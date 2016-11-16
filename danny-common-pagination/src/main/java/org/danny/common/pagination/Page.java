@@ -1,81 +1,151 @@
 package org.danny.common.pagination;
 
-/** 针对当前的mysql做了精简
- * @date 2011-12-1 上午11:36:12
+import org.apache.commons.collections.CollectionUtils;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 分页
+ *
+ * @author sigon
+ * @version 3.0
  */
-public class  Page {
+public class Page<T> implements Serializable {
 
-    //分页参数
-    public static final int PAGE_SIZE = 20;
+    private static final long serialVersionUID = -2053800594583879853L;
 
-    // 分页查询开始记录位置
-    private int begin;
-    // 分页查看下结束位置
-    private int end;
-    // 每页显示记录数
-    private int length;
-    // 当前页码
-    private int current;
+    /** 内容 */
+    private final List<T> content = new ArrayList<T>();
 
+    /** 总记录数 */
+    private final long total;
+
+    /** 分页信息 */
+    private final Pageable pageable;
+
+    /**
+     * 初始化一个新创建的Page对象
+     */
     public Page() {
-    }
-
-    public Page(int current, int length){
-        if(current == 0){
-            current = 1;
-        }
-
-        if(length == 0){
-            length = PAGE_SIZE;
-        }
-
-        begin = (current-1) * length;
-        end = length;
+        this.total = 0L;
+        this.pageable = new Pageable();
     }
 
     /**
-     * @return the begin
+     * @param content
+     *            内容
+     * @param total
+     *            总记录数
+     * @param pageable
+     *            分页信息
      */
-    public int getBegin() {
-        return begin;
+    public Page(List<T> content, long total, Pageable pageable) {
+        if(CollectionUtils.isNotEmpty(content)) {
+            this.content.addAll(content);
+        }
+        this.total = total;
+        this.pageable = pageable;
     }
 
     /**
-     * @return the end
+     * 获取页码
+     *
+     * @return 页码
      */
-    public int getEnd() {
-        return end;
+    public int getPageNumber() {
+        return pageable.getPageNumber();
     }
 
-    public void setBegin(int begin) {
-        this.begin = begin;
+    /**
+     * 获取每页记录数
+     *
+     * @return 每页记录数
+     */
+    public int getPageSize() {
+        return pageable.getPageSize();
     }
 
-    public void setEnd(int end) {
-        this.end = end;
+    /**
+     * 获取搜索属性
+     *
+     * @return 搜索属性
+     */
+    public String getSearchProperty() {
+        return pageable.getSearchProperty();
     }
 
-    public int getLength() {
-        return length;
+    /**
+     * 获取搜索值
+     *
+     * @return 搜索值
+     */
+    public String getSearchValue() {
+        return pageable.getSearchValue();
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    /**
+     * 获取排序属性
+     *
+     * @return 排序属性
+     */
+    public String getOrderProperty() {
+        return pageable.getOrderProperty();
     }
 
-    public int getCurrent() {
-        return current;
+    /**
+     * 获取排序方向
+     *
+     * @return 排序方向
+     */
+    public Order.Direction getOrderDirection() {
+        return pageable.getOrderDirection();
     }
 
-    public void setCurrent(int current) {
-        this.current = current;
+    /**
+     * 获取排序
+     *
+     * @return 排序
+     */
+    public List<Order> getOrders() {
+        return pageable.getOrders();
     }
 
-    @Override
-    public String toString() {
-        return "Page{" +
-                "begin=" + begin +
-                ", end=" + end +
-                '}';
+    /**
+     * 获取总页数
+     *
+     * @return 总页数
+     */
+    public int getTotalPages() {
+        return (int) Math.ceil((double) getTotal() / (double) getPageSize());
     }
+
+    /**
+     * 获取内容
+     *
+     * @return 内容
+     */
+    public List<T> getContent() {
+        return content;
+    }
+
+    /**
+     * 获取总记录数
+     *
+     * @return 总记录数
+     */
+    public long getTotal() {
+        return total;
+    }
+
+    /**
+     * 获取分页信息
+     *
+     * @return 分页信息
+     */
+    public Pageable getPageable() {
+        return pageable;
+    }
+
 }

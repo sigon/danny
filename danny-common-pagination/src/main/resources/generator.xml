@@ -51,7 +51,7 @@
 		</javaClientGenerator>
 
 		<!-- 配置表信息 -->
-		<table schema="Book" tableName="book"
+		<table schema="public" tableName="book"
 			domainObjectName="Book" enableCountByExample="true"
 			enableDeleteByExample="true" enableSelectByExample="true"
 			enableUpdateByExample="true">
