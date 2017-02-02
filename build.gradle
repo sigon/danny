@@ -20,9 +20,9 @@ subprojects {project->
 
         ext {
                 mavenUsername = 'admin'
-                mavenPassword = 'password'
-                nexusUrl = 'http://nexushost:8081'
-                springVersion = "4.3.3.RELEASE"
+                mavenPassword = 'qwer1234'
+                nexusUrl = 'http://218.107.155.100:38081/'
+                springVersion = "4.3.5.RELEASE"
 
 
         }
@@ -30,7 +30,9 @@ subprojects {project->
                 compile(
                         'org.slf4j:slf4j-api:1.7.12',
                         "log4j:log4j:1.2.16",
-                        'net.sf.json-lib:json-lib:2.4:jdk15'
+                        'net.sf.json-lib:json-lib:2.4:jdk15',
+                        "org.springframework:spring-context:$springVersion",
+                        "org.springframework:spring-core:$springVersion",
                 )
                 testCompile 'junit:junit:4.12'
 
@@ -62,7 +64,7 @@ subprojects {project->
         }
         uploadArchives {
                 repositories.mavenDeployer {
-                        pom.groupId = group
+                        pom.groupId = rootProject.group
                         pom.artifactId = project.name
                         pom.version = version
                         // 修改为自己刚才创建的仓库地址

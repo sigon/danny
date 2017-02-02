@@ -1,0 +1,12 @@
+
+dependencies {
+        compile(
+                'org.freemarker:freemarker:2.3.23',
+                'javax.servlet:servlet-api:2.5',
+                "org.springframework:spring-webmvc:$springVersion",
+                "org.springframework:spring-context-support:$springVersion",
+                project(":danny-common-util"),
+                project(":danny-common-pagination")
+        )
+        
+}
